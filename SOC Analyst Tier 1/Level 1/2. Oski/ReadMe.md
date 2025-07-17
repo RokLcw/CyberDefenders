@@ -30,9 +30,8 @@ Determining the creation time of the malware can provide insights into its origi
 그냥 VirusTotal에 악성코드 해시값을 검색한 후, 존재하면 관련된 정보를 수집하는 문제인 것 같다.
 
 VirusTotal
+
 ![Oski_Q1_1.png](./IMG/Oski_Q1_1.png)
-
-
 
 ## Q2
 Identifying the command and control (C2) server that the malware communicates with can help trace back to the attacker. Which C2 server does the malware in the PPT file communicate with?
@@ -44,11 +43,12 @@ ht[t]p://171[.]22[.]28[.]221/5c06c05b7b34e8e6.php
 악성코드가 접촉하는 URL 정보를 확인할 수 있다.
 
 VirusTotal
+
 ![Oski_Q2_1.png](./IMG/Oski_Q2_1.png)
 
 ANY.RUN
-![Oski_Q2_2.png](./IMG/Oski_Q2_2.png)
 
+![Oski_Q2_2.png](./IMG/Oski_Q2_2.png)
 
 ## Q3
 Identifying the initial actions of the malware post-infection can provide insights into its primary objectives. What is the first library that the malware requests post-infection?
