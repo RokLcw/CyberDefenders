@@ -15,6 +15,8 @@
 # Scenario
 Your organization's security team has detected a surge in suspicious network activity. There are concerns that LLMNR (Link-Local Multicast Name Resolution) and NBT-NS (NetBIOS Name Service) poisoning attacks may be occurring within your network. These attacks are known for exploiting these protocols to intercept network traffic and potentially compromise user credentials. Your task is to investigate the network logs and examine captured network traffic.
 
+귀사의 보안팀에서 의심스러운 네트워크 활동이 급증하는 것을 감지했습니다. 네트워크 내에서 LLMNR(Link-Local Multicast Name Resolution) 및 NBT-NS(NetBIOS Name Service) 포이즈닝 공격이 발생했을 가능성이 있습니다. 이러한 공격은 해당 프로토콜을 악용하여 네트워크 트래픽을 가로채고 사용자 자격 증명을 손상시키는 것으로 알려져 있습니다. 네트워크 로그를 조사하고 캡처된 네트워크 트래픽을 분석하는 것이 귀하의 임무입니다.
+
 # 개념 정리
 먼저 알아야 할 개념들을 확인해보자.
 
@@ -40,6 +42,8 @@ LLMNR이 생기기 전까지 사용했던 네트워크 프로토콜로 목적은
 ## Q1
 In the context of the incident described in the scenario, the attacker initiated their actions by taking advantage of benign network traffic from legitimate machines. Can you identify the specific mistyped query made by the machine with the IP address 192.168.232.162?
 
+시나리오에 설명된 사건의 맥락에서, 공격자는 정상적인 컴퓨터에서 발생하는 무해한 네트워크 트래픽을 이용하여 공격을 시작했습니다. IP 주소 192.168.232.162를 사용하는 해당 컴퓨터에서 잘못 입력된 특정 쿼리를 식별할 수 있습니까?
+
 ### Answer
 fileshaare
 
@@ -51,6 +55,8 @@ fileshaare
 ## Q2
 We are investigating a network security incident. To conduct a thorough investigation, We need to determine the IP address of the rogue machine. What is the IP address of the machine acting as the rogue entity?
 
+네트워크 보안 사고를 조사하고 있습니다. 철저한 조사를 위해 악성 컴퓨터의 IP 주소를 확인해야 합니다. 악성 개체로 활동하는 컴퓨터의 IP 주소는 무엇입니까?
+
 ### Answer
 192.168.232.215
 
@@ -61,6 +67,8 @@ We are investigating a network security incident. To conduct a thorough investig
 
 ## Q3
 As part of our investigation, identifying all affected machines is essential. What is the IP address of the second machine that received poisoned responses from the rogue machine?
+
+조사의 일환으로, 영향을 받은 모든 컴퓨터를 식별하는 것이 필수적입니다. 악성 컴퓨터에서 감염된 응답을 받은 두 번째 컴퓨터의 IP 주소는 무엇입니까?
 
 ### Answer
 192.168.232.176
@@ -76,6 +84,8 @@ As part of our investigation, identifying all affected machines is essential. Wh
 
 ## Q4
 We suspect that user accounts may have been compromised. To assess this, we must determine the username associated with the compromised account. What is the username of the account that the attacker compromised?
+
+사용자 계정이 침해되었을 가능성이 있습니다. 이를 확인하려면 침해된 계정과 연결된 사용자 이름을 확인해야 합니다. 공격자가 침해한 계정의 사용자 이름은 무엇입니까?
 
 ### Answer
 janesmith
@@ -94,6 +104,8 @@ SMB Protocol Negotiation, SMB Session Setup (유저 인증, NTLM) 작업이 순�
 ## Q5
 As part of our investigation, we aim to understand the extent of the attacker's activities. What is the hostname of the machine that the attacker accessed via SMB?
 
+조사의 일환으로 공격자의 활동 범위를 파악하는 것이 저희의 목표입니다. 공격자가 SMB를 통해 접속한 컴퓨터의 호스트 이름은 무엇입니까?
+
 ### Answer
 AccountingPC
 
@@ -109,3 +121,5 @@ DNS Tree 명: cybercactus.local
 ```
 
 ![PoisonedCredentials_Q5_1.png](./IMG/PoisonedCredentials_Q5_1.png)
+
+# 마무리
