@@ -122,5 +122,5 @@ Understanding the malware's behavior post-data exfiltration can give insights in
 
 ![Oski_Q7_1.png](./IMG/Oski_Q7_1.png)
 
-# Write-up 비교 & 정리
+# 마무리
 스트림 암호에 대해 학습 및 정리해 볼 필요가 있다.
