@@ -192,7 +192,7 @@ filescan 명령어를 실행해봤다.
 
 ![Amadey_Q7_1.png](./IMG/Amadey_Q7_1.png)
 
-컴퓨터 종료 후 다시 시작해도 실행될 수 있게 Tasks 리스트(스케줄러)에 악성코드를 추가한다. (persistence 유지)
+컴퓨터 종료 후 다시 시작해도 실행될 수 있게 Tasks 리스트(스케줄러)에 악성코드를 추가한다. (persistence 유지, 지속성 유지)
 
 # 마무리
 grep 의 -E 옵션은 OR 연산이라고 보면 된다.
