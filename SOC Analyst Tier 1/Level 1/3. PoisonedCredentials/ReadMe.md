@@ -82,6 +82,10 @@ As part of our investigation, identifying all affected machines is essential. Wh
 
 ![PoisonedCredentials_Q3_2.png](./IMG/PoisonedCredentials_Q3_2.png)
 
+와이어 샤크에서 아래 필터링을 활용하면 192.168.232.215 ip 주소를 가진 NetBIOS Name Service (NBNS) 를 필터링 할 수 있다.
+
+``nbns.addr==192.168.232.215``
+
 ## Q4
 We suspect that user accounts may have been compromised. To assess this, we must determine the username associated with the compromised account. What is the username of the account that the attacker compromised?
 
@@ -97,9 +101,13 @@ SMB Protocol Negotiation, SMB Session Setup (유저 인증, NTLM) 작업이 순�
 
 ![PoisonedCredentials_Q4_1.png](./IMG/PoisonedCredentials_Q4_1.png)
 
-그리고 Session Setup Request 과정에서 해킹당한 사용자 명과 공격자의 접속 호스트 명을 확인할 수 있다.
+그리고 Session Setup Request 과정에서 해킹당한 사용자의 이름과, 접속 호스트 명을 확인할 수 있다.
 
 ![PoisonedCredentials_Q4_2.png](./IMG/PoisonedCredentials_Q4_2.png)
+
+와이어 샤크에서 아래 필터링을 활용하면 목적지 ip 주소가 192.168.232.215인 ip를 필터링 할 수 있다.
+
+``ip.dst==192.168.232.215``
 
 ## Q5
 As part of our investigation, we aim to understand the extent of the attacker's activities. What is the hostname of the machine that the attacker accessed via SMB?
@@ -123,3 +131,4 @@ DNS Tree 명: cybercactus.local
 ![PoisonedCredentials_Q5_1.png](./IMG/PoisonedCredentials_Q5_1.png)
 
 # 마무리
+LLMNR/NBT-NS의 개념과 LLMNR / NBT-NS 포이즈닝 공격 그리고 SMB에 대해 이해할 수 있는 문제
