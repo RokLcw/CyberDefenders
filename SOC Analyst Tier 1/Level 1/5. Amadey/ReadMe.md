@@ -24,6 +24,10 @@ EDR(Endpoint Detection and Response) 시스템의 근무 시간 외 경보가 Wi
 # 개념 정리
 Amadey Trojan Stealer
 
+Malware as a Service (Maas): 서비스형 악성코드, 악성코드 개발자가 다른 사이버 범죄자에게 악성코드를 서비스 형태로 제공하는 것을 말한다.
+
+Amadey 악성코드 또한 Maas 악성코드 중 하나로 컴퓨터에 숨어 정보를 탈취한다.
+
 # Questions
 
 ## Q1
