@@ -20,7 +20,6 @@ During a regular IT security check at GlobalTech Industries, abnormal network tr
 GlobalTech Industries에서 정기 IT 보안 점검을 진행하던 중 여러 워크스테이션에서 비정상적인 네트워크 트래픽이 감지되었습니다. 초기 조사 결과, 특정 직원들의 검색 쿼리가 낯선 웹사이트로 리디렉션되고 있는 것으로 확인되었습니다. 이 발견으로 인해 우려가 제기되었고, 더욱 철저한 조사가 시작되었습니다. 여러분의 임무는 이 사고를 조사하고 최대한 많은 정보를 수집하는 것입니다.
 
 # Questions
-Yellow Cockatoo RAT
 
 ## Q1
 Understanding the adversary helps defend against attacks. What is the name of the malware family that causes abnormal network traffic?
