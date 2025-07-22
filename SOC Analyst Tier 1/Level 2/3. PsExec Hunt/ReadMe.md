@@ -48,10 +48,10 @@ Admin$
 - 윈도우 운영체제에서 시스템 관리자가 원격으로 시스템에 접근하기 위해 사용하는 숨겨진 관리 공유 폴더. 일반적으로 공유 폴더 뒤에는 "$" 가 붙는다.
 
 PsExec를 이용한 쉘 획득 방법
-1. 인증: 제공된 자격 증명 또는 현재 자격 증명을 사용하여 SMB를 통해 연결
+1. 인증: 제공된 자격 증명 또는 현재 자격 증명을 사용하여 SMB를 통해 연결 (SMB 인증 세션 생성은 IPC$ 공유폴더를 통해 진행)
 2. 파일 드롭: 원격 컴퓨터의 ADMIN$ 공유에 PsExecSvc.exe를 복사
 3. 서비스 생성: PsExecSvc라는 새로운 서비스를 설치하고 시작
-4. 파이프 기반 통신: PsExec-<host>-<random>과 같은 명명된 파이프를 사용하여 통신
+4. 파이프 기반 통신: PsExec-<host>-<random>과 같은 명명된 파이프를 사용하여 통신 ($IPC)
 5. 정리: 서비스 및 실행 가능한 작업 후 삭제
 
 전제 조건
@@ -175,8 +175,40 @@ We must identify the network share used to communicate between the two machines.
 두 컴퓨터 간 통신에 사용된 네트워크 공유를 확인해야 합니다. PsExec은 어떤 네트워크 공유를 사용하여 통신했습니까?
 
 ### Answer
+IPC$
 
 ### 분석
+초반 확인했던 SMB Tree Connect 부분에서 $IPC 공유 폴더로의 최초 접근이 확인됐다. 
+
+![PsExec_Hunt_Q1_1.png](./IMG/PsExec_Hunt_Q1_1.png)
+
+IPC$ 공유 폴더는 클라이언트가 서버에 접근하여 프로세스 간 통신을 가능하도록 한다. 그렇기 때문에 공격자는 우선 IPC$ 공유 폴더에 접근한 후 인증을 시도한 후 성공시 SMB 인증 세션을 생성한다.
+
+이후 ADMIN$ 공유 폴더에 PsExec 파일을 복사한 후 서비스 등록을 진행해준다. 그럼 해당 서비스를 이용해서 공격자는 서버를 원격으로 접속할 수 있게 된다. (셸 획득, 통신 과정에서 $IPC는 명령을 실행하고 제어하기 위한 필수 통신 채널)
+
+smb는 TCP 445번 포트로 통신을 하게 되는데 아래 사진을 보면 공격자 또한 TCP 445번 포트를 이용하여 파일 전송을 진행하고 있다.
+
+![PsExec_Hunt_Q6_1.png](./IMG/PsExec_Hunt_Q6_1.png)
+
+
+## Q7
+Now that we have a clearer picture of the attacker's activities on the compromised machine, it's important to identify any further lateral movement. What is the hostname of the second machine the attacker targeted to pivot within our network?
+
+이제 침해된 컴퓨터에서 공격자의 활동을 더 명확하게 파악했으므로, 추가적인 측면 이동을 파악하는 것이 중요합니다. 공격자가 네트워크 내에서 피벗을 시도한 두 번째 컴퓨터의 호스트 이름은 무엇입니까?
+
+### Answer
+Marketing-PC
+
+### 분석
+위에서 봤던 SMB를 이용한 접근 방식이 동일하게 10.0.0.131 주소를 대상으로 진행되고 있다.
+
+![PsExec_Hunt_Q7_1.png](./IMG/PsExec_Hunt_Q7_1.png)
+
+조금 더 자세히 살펴보면 jdoe 라는 계정명으로 인증에 실패했고, 이후 IEUser라는 계정명으로 인증에 성공했다.
 
 # 마무리
 참고할만한 사이트: https://401trg.github.io/pages/an-introduction-to-smb-for-network-security-analysts.html
+
+$IPC, PsExec, RDC, named pip 등 각각의 개념이 조금씩 헷갈린다.
+
+SMB 프로토콜도 꼭 정리해야 위 내용도 이해할 수 있을것으로 보인다.
