@@ -203,3 +203,6 @@ ADVAPI32.dll
 윈도우 권한에 대한 자세한 내용은 아래 링크 참고.
 
 링크: https://roklcw.tistory.com/43
+
+# 마무리
+Virustotal, malwareBazarr, ThreatFox, Any.run, Malpedia 등의 웹 사이트를 이용해서 악성코드의 정보(이름, 패밀리, 기능, 네트워크 등)를 파악하는 과정의 중요성, 생각보다 얻을 수 있는 정보가 많다는 점도 학습할 수 있었다.
