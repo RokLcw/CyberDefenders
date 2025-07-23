@@ -68,3 +68,12 @@ Determining the age of the malware can help assess the extent of the compromise 
 악성코드 생성시간: 2023-03-13 06:33:26 UTC
 
 ![SCX_Supply_Chain_Q2_1.png](./IMG/SCX_Supply_Chain_Q2_1.png)
+
+## Q3
+Executable files (.exe) are frequently used as primary or secondary malware payloads, while dynamic link libraries (.dll) often load malicious code or enhance malware functionality. Analyzing files deposited by the Microsoft Software Installer (.msi) is crucial for identifying malicious files and investigating their full potential. Which malicious DLLs were dropped by the .msi file?
+
+실행 파일(.exe)은 1차 또는 2차 맬웨어 페이로드로 자주 사용되는 반면, 동적 연결 라이브러리(.dll)는 악성 코드를 로드하거나 맬웨어 기능을 강화하는 경우가 많습니다. Microsoft 소프트웨어 설치 관리자(.msi)에서 생성된 파일을 분석하는 것은 악성 파일을 식별하고 그 잠재력을 최대한 조사하는 데 매우 중요합니다. .msi 파일에서 어떤 악성 DLL이 삭제되었습니까?
+
+### Answer
+
+### 분석
