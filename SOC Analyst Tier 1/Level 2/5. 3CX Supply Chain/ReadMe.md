@@ -37,7 +37,11 @@ msi 확장자의 윈도우 설치 프로그램이 하나 제공된다. 당황하
 Hash (MD5): 0EEB1C0133EB4D571178B2D9D14CE3E9
 
 # 개념 정리
-서플라이 체인 공격
+공급망 공격 (Supply Chain Attack): 공격자가 소프트웨어, 하드웨어 또는 서비스의 공급망에 침투하여 악성 코드를 삽입하거나 시스템을 손상시키는 사이버 공격 유형. (ex. 개발사 네트워크에 침투하여 소스 코드에 악성 코드 삽입, 배포를 위한 서버에 접근해서 파일 변경 등)
+
+3CX: 사용자에게 채팅, 화상 통화, 음성 통화 등 다양한 커뮤니케이션 기능을 제공하는 기업용 소프트웨어
+
+3CX Supply chain attack:  2023년 3월 말 소프트웨어 공급망 침해 사고로 3CX 웹사이트에서 트로이 목마 악성코드가 유포됨
 
 # Questions
 
@@ -116,7 +120,67 @@ VirusTotal에서 카테고리를 확인할 수 있다.
 ![SCX_Supply_Chain_Q5_1.png](./IMG/SCX_Supply_Chain_Q5_1.png)
 ![SCX_Supply_Chain_Q5_2.png](./IMG/SCX_Supply_Chain_Q5_2.png)
 
+## Q6
+As a threat intelligence analyst conducting dynamic analysis, it's vital to understand how malware can evade detection in virtualized environments or analysis systems. This knowledge will help you effectively mitigate or address these evasive tactics. What is the MITRE ID for the virtualization/sandbox evasion techniques used by the two malicious DLLs?
+
+동적 분석을 수행하는 위협 인텔리전스 분석가로서, 가상화된 환경이나 분석 시스템에서 악성코드가 탐지를 회피하는 방식을 이해하는 것은 매우 중요합니다. 이러한 지식은 이러한 탐지 회피 전략을 효과적으로 완화하거나 해결하는 데 도움이 될 것입니다. 두 악성 DLL에서 사용하는 가상화/샌드박스 탐지 회피 기법의 MITRE ID는 무엇입니까?
+
+### Answer
+T1497
+
+### 분석
+VirusTotal에서 가상화/샌드박스 탐지 회피 기법의 Mitre Att&k ID를 확인할 수 있다.
+
+![SCX_Supply_Chain_Q6_1.png](./IMG/SCX_Supply_Chain_Q6_1.png)
+
+## Q7
+When conducting malware analysis and reverse engineering, understanding anti-analysis techniques is vital to avoid wasting time. Which hypervisor is targeted by the anti-analysis techniques in the ffmpeg.dll file?
+
+맬웨어 분석 및 리버스 엔지니어링을 수행할 때 시간 낭비를 막기 위해 분석 방지 기술을 이해하는 것이 매우 중요합니다. ffmpeg.dll 파일의 분석 방지 기술은 어떤 하이퍼바이저를 대상으로 합니까?
+
+### Answer
+VMWare
+
+### 분석
+VirusTotal에서 ffmpeg.dll의 별도 분석 결과를 확인할 수 있다.
+
+![SCX_Supply_Chain_Q7_1.png](./IMG/SCX_Supply_Chain_Q7_1.png)
+
+확인해보면 VMWare를 탐지하고 우회하는 것으로 확인됐다.
+
+![SCX_Supply_Chain_Q7_2.png](./IMG/SCX_Supply_Chain_Q7_2.png)
+
+## Q8
+Identifying the cryptographic method used in malware is crucial for understanding the techniques employed to bypass defense mechanisms and execute its functions fully. What encryption algorithm is used by the ffmpeg.dll file?
+
+악성코드에 사용되는 암호화 방식을 파악하는 것은 방어 메커니즘을 우회하고 기능을 완벽하게 실행하는 데 사용되는 기법을 이해하는 데 매우 중요합니다. ffmpeg.dll 파일은 어떤 암호화 알고리즘을 사용합니까?
+
+### Answer
+RC4
+
+### 분석
+VirusTotal에서 암호화 알고리즘을 확인할 수 있다.
+
+![SCX_Supply_Chain_Q8_1.png](./IMG/SCX_Supply_Chain_Q8_1.png)
+
+## Q9
+As an analyst, you've recognized some TTPs involved in the incident, but identifying the APT group responsible will help you search for their usual TTPs and uncover other potential malicious activities. Which group is responsible for this attack?
+
+분석가로서, 당신은 이 사건에 연루된 몇몇 TTP를 파악했지만, APT 그룹을 식별하면 그들의 일반적인 TTP를 검색하고 다른 잠재적인 악성 활동을 발견하는 데 도움이 될 것입니다. 이 공격의 배후는 누구일까요?
+
+### Answer
+Lazarus
+
+### 분석
+북한의 라자루스 그룹
+
+![SCX_Supply_Chain_Q9_1.png](./IMG/SCX_Supply_Chain_Q9_1.png)
+![SCX_Supply_Chain_Q9_2.png](./IMG/SCX_Supply_Chain_Q9_2.png)
+
+
 # 마무리
+VirusTotal에는 생각보다 볼 정보가 많다.
+
 참고한 보고서 리스트
 - https://asec.ahnlab.com/ko/51915/
 - https://www.fortinet.com/blog/threat-research/3cx-desktop-app-compromised
