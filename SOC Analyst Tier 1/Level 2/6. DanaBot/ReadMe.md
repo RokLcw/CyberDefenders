@@ -30,9 +30,15 @@ pcap 파일이 주어진다.
 ## Q1
 Which IP address was used by the attacker during the initial access?
 
-공격자는 초기 접근 시 어떤 IP 주소를 사용했습니까?
+공격자는 초기 접근 시 어떤 IP 주소를 사용했습니까? (공격자가 접근한 IP 주소)
 
 ### Answer
-
+62.173.142.148
 
 ### 분석
+아예 감을 못 잡겠어서 힌트를 우선 힌트를 보면서 문제 풀이를 시작했다. 
+
+![DanaBot_Q1_1.png](./IMG/DanaBot_Q1_1.png)
+
+# 마무리
+이번 문제는 아예 접근을 못한 채로 힌트를 보며 문제 풀이 진행했다.
