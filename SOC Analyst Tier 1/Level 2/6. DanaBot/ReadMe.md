@@ -60,7 +60,7 @@ What is the name of the malicious file used for initial access?
 초기 접근에 사용된 악성 파일의 이름은 무엇입니까?
 
 ### Answer
-
+allegato_708.js
 
 ### 분석
 서버(62.173.142.148)가 클라이언트(10.2.14.101)에게 200 OK를 보내는 http 응답 패킷을 자세히 들여다 보면 클라이언트는 분명 php 파일을 요청했지만 응답을 통해 날라오는 파일은 allegato_708.js 였다. (URI는 /login.php)
