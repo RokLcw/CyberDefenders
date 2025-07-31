@@ -71,5 +71,58 @@ allegato_708.js
 
 ![DanaBot_Q2_2.png](./IMG/DanaBot_Q2_2.png)
 
+## Q3
+What is the SHA-256 hash of the malicious file used for initial access?
+
+초기 접근에 사용된 악성 파일의 SHA-256 해시는 무엇입니까?
+
+### Answer
+847b4ad90b1daba2d9117a8e05776f3f902dda593fb1252289538acf476c4268
+
+### 분석
+위에서 발견한 코드를 PC에 저장한 후 해시값을 계산했다.
+
+![DanaBot_Q3_1.png](./IMG/DanaBot_Q3_1.png)
+
+## Q4
+Which process was used to execute the malicious file?
+
+악성 파일을 실행하는 데 어떤 프로세스가 사용되었나요?
+
+### Answer
+wscript.exe
+
+### 분석
+Any.run에서 해당 악성코드 분석 내용을 보면 js 가 실행되면 wscript.exe가 먼저 실행되는걸 확인할 수 있다.
+
+![DanaBot_Q4_1.png](./IMG/DanaBot_Q4_1.png)
+
+## Q5
+What is the file extension of the second malicious file utilized by the attacker?
+
+공격자가 사용하는 두 번째 악성 파일의 파일 확장자는 무엇입니까?
+
+### Answer
+.dll
+
+### 분석
+rundll32.exe가 실행하는 악성코드는 CvFDjHTeuG.dll 이라는 이름을 가지고 있다.
+
+![DanaBot_Q4_1.png](./IMG/DanaBot_Q4_1.png)
+
+## Q5
+What is the MD5 hash of the second malicious file?
+
+두 번째 악성 파일의 MD5 해시는 무엇입니까?
+
+### Answer
+E758E07113016ACA55D9EDA2B0FFEEBE
+
+### 분석
+Any.Run에서 CvFDjHTeuG.dll의 MD5 해시값을 확인할 수 있다.
+
+![DanaBot_Q5_1.png](./IMG/DanaBot_Q5_1.png)
+![DanaBot_Q5_2.png](./IMG/DanaBot_Q5_2.png)
+
 # 마무리
 이번 문제는 아예 접근을 못한 채로 힌트를 보며 문제 풀이 진행했다.
