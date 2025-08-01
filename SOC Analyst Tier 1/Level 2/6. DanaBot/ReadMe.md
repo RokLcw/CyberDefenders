@@ -71,6 +71,14 @@ allegato_708.js
 
 ![DanaBot_Q2_2.png](./IMG/DanaBot_Q2_2.png)
 
+파일을 저장한 후 리눅스의 file 명령어를 활용하는 것도 파일의 종류를 확인할 수 있는 방법 중 하나다.
+
+```
+user@DESKTOP:/mnt/c/Users/사용자/Downloads/$ file login.php
+
+login.php: JavaScript source, ASCII text, with very long lines (5558), with no line terminators
+```
+
 ## Q3
 What is the SHA-256 hash of the malicious file used for initial access?
 
@@ -83,6 +91,10 @@ What is the SHA-256 hash of the malicious file used for initial access?
 위에서 발견한 코드를 PC에 저장한 후 해시값을 계산했다.
 
 ![DanaBot_Q3_1.png](./IMG/DanaBot_Q3_1.png)
+
+파일을 저장하는 방법은 와이어 샤크에서 파일 → 객체 내보내기 메뉴를 활용하면 되고, 현재 확인하려는 파일이 HTTP 프로토콜이므로 HTTP 을 선택해주면 된다.  
+
+![DanaBot_Q3_2.png](./IMG/DanaBot_Q3_2.png)
 
 ## Q4
 Which process was used to execute the malicious file?
