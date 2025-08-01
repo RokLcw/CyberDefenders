@@ -17,9 +17,6 @@
 [Questions 7](#q7)
 
 # Scenario
-
-
-# 문제 파일
 On May 2, 2024, a multinational corporation identified suspicious PowerShell processes on critical systems, indicating a potential malware infiltration. This activity poses a threat to sensitive data and operational integrity.
 
 You have been provided with a memory dump (memory.dmp) from the affected system. Your task is to analyze the dump to trace the malware's actions, uncover its evasion techniques, and understand its persistence mechanisms.
@@ -27,8 +24,6 @@ You have been provided with a memory dump (memory.dmp) from the affected system.
 2024년 5월 2일, 한 다국적 기업이 중요 시스템에서 의심스러운 PowerShell 프로세스를 발견하여 악성코드 침투 가능성을 시사했습니다. 이러한 활동은 민감한 데이터와 운영 무결성에 위협이 됩니다.
 
 영향을 받은 시스템의 메모리 덤프(memory.dmp)를 제공받았습니다. 귀하의 임무는 덤프를 분석하여 악성코드의 동작을 추적하고, 우회 기법을 파악하고, 지속성 메커니즘을 이해하는 것입니다.
-
-# 개념 정리
 
 # Questions
 
@@ -128,3 +123,6 @@ Lee
 Lee 라는 사용자의 폴더에 악성코드가 저장되어 실행됐다.
 
 ![Volatility_Traces_Q7_1.png](./IMG/Volatility_Traces_Q7_1.png)
+
+# 마무리
+Volatility를 이용한 포렌식에 대한 문제
