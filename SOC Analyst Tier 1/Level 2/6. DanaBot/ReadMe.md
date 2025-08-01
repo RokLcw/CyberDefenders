@@ -1,4 +1,4 @@
-# 3CX Supply Chain
+# DanaBot
 
 ## 목차
 
@@ -19,9 +19,6 @@ SOC 팀이 네트워크 트래픽에서 의심스러운 활동을 감지하여 �
 
 # 문제 파일
 pcap 파일이 주어진다.
-
-# 개념 정리
-
 
 # Questions
 
