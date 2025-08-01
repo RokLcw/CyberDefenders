@@ -12,8 +12,6 @@
 
 [Questions 5](#q5)
 
-[Questions 6](#q6)
-
 # Scenario
 The SOC team has detected suspicious activity in the network traffic, revealing that a machine has been compromised. Sensitive company information has been stolen. Your task is to use Network Capture (PCAP) files and Threat Intelligence to investigate the incident and determine how the breach occurred.
 
