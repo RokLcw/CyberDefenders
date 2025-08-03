@@ -55,6 +55,8 @@ boot 폴더에서 리눅스 배포판 정보를 확인할 수 있다.
 
 그리고 /root/var/log/installer 경로에 있는 syslog, satus 등의 파일에서도 관련 정보를 확인할 수 있다.
 
+특히 syslog의 경우 시스템 시작 시 커널 버전과 빌드 메타데이터가 기록되므로 운영 체제 버전 및 배포판에 대한 정보를 확인할 수 있다.
+
 ![Insider_Q1_2.png](./IMG/Insider_Q1_2.png)
 
 ## Q2
@@ -92,11 +94,9 @@ mimikatz_trunk.zip
 
 ![Insider_Q3_1.png](./IMG/Insider_Q3_1.png)
 
-미미카츠는 자격 증명 정보를 추출하는 기능을 갖는 프로그램이다.
+미미카츠는 자격 증명 정보를 추출하는 기능을 갖는 프로그램이다. 자격 증명 정보를 추출한다는 것은 공격자가 시스템에서 사용자 이름 및 비밀번호와 같은 로그인 자격 증명을 추출하는 데 사용하는 기법이라고 보면 된다. 
 
 원본: https://github.com/ParrotSec/mimikatz
-
-다운로드 경로에서 확인된 파일은 아래 링크에서 다운로드 받은것으로 추정된다.
 
 ## Q4
 A super-secret file was created. What is the absolute path to this file?
@@ -110,6 +110,8 @@ A super-secret file was created. What is the absolute path to this file?
 .bash_history 파일을 Bash 쉘에서 사용자가 입력한 명령어 기록을 저장하는 파일이다. 해당 파일을 조사하면 사용자가 입력한 명령어들을 확인할 수 있다.
 
 ![Insider_Q4_1.png](./IMG/Insider_Q4_1.png)
+
+일반적으로 touch 명령어는 빈 파일을 만드는데 사용된다.
 
 해당 파일을 확인해보면 사용자는 touch 명령어를 이용해 snky 라는 빈 파일을 만들고 /root/Desktop/ 경로에 SuperSecretFile.txt 라는 파일을 snky 라는 파일로 덮어씌우는 작업을 진행한 것으로 보인다.
 
@@ -160,7 +162,7 @@ Apache는 몇 번 실행되었나요?
 0
 
 ### 분석
-내용이 비어있으므로 아파치는 한 번도 실행되지 않았다고 볼 수 있다. (처음엔 몇 번 실행됐냐길래 비어있는 로그가 어디 다른곳에 숨겨져있는줄 알았다;;;;)
+내용이 비어있으므로 아파치는 한 번도 실행되지 않았다고 볼 수 있다. 혹은 공격자가 증거를 남기지 않기 위해 삭제했을 가능성도 존재한다 (처음엔 몇 번 실행됐냐길래 비어있는 로그가 어디 다른곳에 숨겨져있는줄 알았다;;;;). 
 
 ![Insider_Q2_1.png](./IMG/Insider_Q2_1.png)
 
@@ -176,6 +178,18 @@ irZLAohL.jpeg
 /root 경로를 확인해보면 irZLAohL.jpeg 사진파일이 있고, 현재 분석 중인 OS는 칼리 리눅스이지만 사진은 윈도우인 점을 봤을 때 해킹한 다른 PC의 스크린샷 사진으로 추정된다.
 
 ![Insider_Q7_1.png](./IMG/Insider_Q7_1.png)
+
+해당 사진의 터미널 창을 자세히 확인해보면 flightsim 이라는 프로그램이 사용된 것을 확인할 수 있다. 
+
+![Insider_Q8_1.png](./IMG/Insider_Q8_1.png)
+
+해당 프로그램은 악성 네트워크 트래픽을 생성하고 보안 팀이 보안 제어 및 네트워크 가시성을 평가(테스트)하는 데 사용되는 정상적인 프로그램이다. (포트 스캔, 브루트 포싱 공격, DNS 터널링 공격 등)
+
+주요 목적은 방화벽 및 침입 탐지 시스템과 같은 보안 모니터링 시스템의 시뮬레이션된 위협 탐지 능력을 테스트, 평가하는 역할이지만 악의적인 용도로 사용될 가능성 또한 존재한다.
+
+도구 링크: https://github.com/alphasoc/flightsim
+
+
 
 ## Q9
 It is believed that Karen was taunting a fellow computer expert through a bash script within the Documents directory. Who was the expert that Karen was taunting?
@@ -204,9 +218,11 @@ A user executed the su command to gain root access multiple times at 11:26. Who 
 postgres
 
 ### 분석
-/var/log/auth.log 를 보면 11시 26분에 발생한 su 로그를 확인할 수 있다. Successful su for postgres by root, postgres 라는 사용자가 root 권한 획득에 성공한다.
+/var/log/auth.log 를 보면 11시 26분에 발생한 su 로그를 확인할 수 있다. Successful su for postgres by root, KarenHacker 라는 사용자가 root 권한을 사용하여 postgres 사용자로 계정 전환에 성공한다.
 
 ![Insider_Q10_1.png](./IMG/Insider_Q10_1.png)
+
+postgres 라는 사용자명은 PostgreSQL이라는 DBMS에서 사용되는 기본 사용자명으로 DB에 관련된 어떤 작업을 하려고 했을 가능성이 있다.
 
 ## Q11
 Based on the bash history, what is the current working directory?
@@ -221,3 +237,5 @@ bash 기록을 기준으로 현재 작업 디렉토리는 무엇입니까?
 
 # 마무리
 이 문제는 문제만 풀어서는 뭘 학습하고자 하는지 목적을 잘 모르겠다.. Write-up을 읽어보자.
+
+해당 문제에서 학습할 수 있는 내용은 파일 무결성 분석, 권한 상승 식별 및 잠재적 공격 발견이라고 한다.
