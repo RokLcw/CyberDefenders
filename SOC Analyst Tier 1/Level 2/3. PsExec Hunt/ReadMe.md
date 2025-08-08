@@ -106,7 +106,7 @@ SMB 프로토콜 간 인증 패킷들을 확인해보면 공격 대상으로 잡
 
 만약 3번 과정에서 클라이언트가 보낸 인증 값이 서버에서 검증되면 서버는 클라이언트에게 accept-completed 값을 보내준다. (SMB Session Setup 마지막 Response 값)
 
-![PsExec_Hunt_Q1_2.png](./IMG/PsExec_Hunt_Q1_2.png)
+![PsExec_Hunt_Q2_2.png](./IMG/PsExec_Hunt_Q2_2.png)
 
 ## Q3
 Knowing the username of the account the attacker used for authentication will give us insights into the extent of the breach. What is the username utilized by the attacker for authentication?
