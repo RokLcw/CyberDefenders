@@ -200,7 +200,7 @@ What is the token for accessing the channel?
 채널에 접속하기 위한 토큰은 무엇인가요?
 
 ### Answer
-5457463144:AAG8t4k7e2ew3tTi0IBShcWbSia0Irvxm10
+<토큰값>
 
 ### 분석
 metamask.php 코드에서 확인할 수 있다.
@@ -255,7 +255,7 @@ Marcus Aurelius
 
 ```
 $id = "5442785564"; 
-$token = "5457463144:AAG8t4k7e2ew3tTi0IBShcWbSia0Irvxm10"; 
+$token = "토큰값"; 
 ```
 
 Telegram 봇의 getChat API를 이용하면 채팅의 정보를 확인할 수 있다.
@@ -265,7 +265,7 @@ Telegram 봇의 getChat API를 이용하면 채팅의 정보를 확인할 수 �
 Telegram 봇에게 요청을 보내봤다.
 
 ```
-https://api.telegram.org/bot5457463144:AAG8t4k7e2ew3tTi0IBShcWbSia0Irvxm10/getChat?chat_id=5442785564
+https://api.telegram.org/bot<토큰값>/getChat?chat_id=5442785564
 ```
 
 잘 되지 않는다.
@@ -276,11 +276,11 @@ Telgram 봇은
 curl을 이용해 요청을 보내봤다.
 
 ```
-curl -H "Content-Type: application/json" -d '{"chat_id":"5442785564"}' -X POST "https://api.telegram.org/bot5457463144:AAG8t4k7e2ew3tTi0IBShcWbSia0Irvxm10/getChat"
+curl -H "Content-Type: application/json" -d '{"chat_id":"5442785564"}' -X POST "https://api.telegram.org/bot<토큰값>/getChat"
 
 -----
 
-curl "https://api.telegram.org/bot5457463144:AAG8t4k7e2ew3tTi0IBShcWbSia0Irvxm10/getChat?chat_id=5442785564" | jq
+curl "https://api.telegram.org/bot<토큰값>/getChat?chat_id=5442785564" | jq
 ```
 
 안된다.. 뭔가 토큰에 문제가 있는 것 같다.
