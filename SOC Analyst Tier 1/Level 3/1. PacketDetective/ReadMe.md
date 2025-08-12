@@ -154,15 +154,87 @@ What is the name of the service that communicated using this named pipe?
 이 명명된 파이프를 사용하여 통신한 서비스의 이름은 무엇입니까?
 
 #### Answer
-
+atsvc
 
 #### 분석
+RPC와 관련된 패킷들이 아래 보인다.
+
+![PacketDetective_T2_Q1_1.png](./IMG/Traffic_2.pcapng/PacketDetective_T2_Q1_1.png)
+
+ISystemActivator 프로토콜의 RemoteCreateInstance response 패킷을 확인해보면 "named pipes" 인 atsvc를 확인할 수 있다. (서버: 172.16.66.36 → 클라이언트: 172.16.66.1)
+
+![PacketDetective_T2_Q1_2.png](./IMG/Traffic_2.pcapng/PacketDetective_T2_Q1_2.png)
+
+atsvc는 윈도우에서 원격으로 작업(Task)을 예약하고 관리하는 기능을 제공한다.
+
+### Q2
+Measuring the duration of suspicious communication can reveal how long the attacker maintained unauthorized access, providing insights into the scope and persistence of the attack.
+What was the duration of communication between the identified addresses 172.16.66.1 and 172.16.66.36?
+
+의심스러운 통신의 지속 시간을 측정하면 공격자가 무단 접근을 유지한 시간을 파악할 수 있으며, 이를 통해 공격의 범위와 지속성에 대한 통찰력을 얻을 수 있습니다.
+식별된 주소 172.16.66.1과 172.16.66.36 간의 통신 지속 시간은 얼마였습니까?
+
+#### Answer
+11.7247
+
+#### 분석
+wireshark의 Statistics → Conversations 탭으로 가면 통신 지속시간 확인이 가능하다.
+
+![PacketDetective_T2_Q2_1.png](./IMG/Traffic_2.pcapng/PacketDetective_T2_Q2_1.png)
 
 ## File: Traffic-3.pcapng
+
+### Q1
+The attacker used a non-standard username to set up requests, indicating an attempt to maintain covert access. Identifying this username is essential for understanding how persistence was established.
+Which username was used to set up these potentially suspicious requests?
+
+공격자는 비표준 사용자 이름을 사용하여 요청을 설정했는데, 이는 은밀한 접근을 유지하려는 시도였음을 나타냅니다. 이 사용자 이름을 식별하는 것은 지속성 구축 방식을 이해하는 데 필수적입니다.
+이러한 의심스러운 요청을 설정하는 데 사용된 사용자 이름은 무엇입니까?
+
+#### Answer
+backdoor
+
+#### 분석
+클라이언트는 서버가 보낸 Challenge(무작위로 생성된 값)를 자신의 비밀번호 해시와 조합하여 응답을 생성한 후 사용자 이름 backdoor와 함께 서버에 다시 전송한다.
+
+![PacketDetective_T3_Q1_1.png](./IMG/Traffic_3.pcapng/PacketDetective_T3_Q1_1.png)
+
+### Q2
+The attacker leveraged a specific executable file to execute processes remotely on the compromised system. Recognizing this file name can assist in pinpointing the tools used in the attack.
+What is the name of the executable file utilized to execute processes remotely?
+
+공격자는 특정 실행 파일을 이용하여 손상된 시스템에서 원격으로 프로세스를 실행했습니다. 이 파일 이름을 파악하면 공격에 사용된 도구를 정확히 파악하는 데 도움이 될 수 있습니다.
+원격으로 프로세스를 실행하는 데 사용된 실행 파일의 이름은 무엇입니까?
+
+#### Answer
+PSEXESVC.exe
+
+#### 분석
+SMB2 프로토콜로 PSEXESVC.exe 파일 생성 요청을 하는 패킷을 확인할 수 있다.
+
+![PacketDetective_T3_Q2_1.png](./IMG/Traffic_3.pcapng/PacketDetective_T3_Q2_1.png)
+
+
+아래는 smb2 프로토콜에서 ".exe" 문자열이 포함된 파일명을 찾아내는 필터링 방법이다.
+```
+smb2.filename contains ".exe"
+```
 
 ### 마무리
 RPC의 개념에 대해 학습, 정리해볼 필요가 있을 것 같다.
 
-RPC, 파이프.
+키워드: RPC, 파이프, named pipe, atsvc, DCOM, COM.
 
-참고: https://hackyboiz.github.io/2021/10/22/poosic/rpc/
+그리고 필터링과 도구의 기능을 습득하고 잘 사용하는게 매우 중요해보인다.
+
+참고할만한 자료들?
+```
+https://hackyboiz.github.io/2021/10/22/poosic/rpc/
+
+
+https://i.blackhat.com/eu-18/Thu-Dec-6/eu-18-Warner-Sirr-Network-Defender-Archeology-An-NSM-Case-Study-In-Lateral-Movement-With-DCOM.pdf
+
+https://jacobfilipp.com/MSJ/dcom.html
+
+https://www.sentinelone.com/labs/relaying-potatoes-another-unexpected-privilege-escalation-vulnerability-in-windows-rpc-protocol/
+```
