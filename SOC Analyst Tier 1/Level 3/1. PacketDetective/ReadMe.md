@@ -2,13 +2,11 @@
 
 ## 목차
 
-[Questions 1](#q1)
+[## File: Traffic-1.pcapng](#file-traffic-1pcapng)
 
-[Questions 2](#q2)
+[## File: Traffic-2.pcapng](#file-traffic-2pcapng)
 
-[Questions 3](#q3)
-
-[Questions 4](#q4)
+[## File: Traffic-3.pcapng](#file-traffic-3pcapng)
 
 # Scenario
 In September 2020, your SOC detected suspicious activity from a user device, flagged by unusual SMB protocol usage. Initial analysis indicates a possible compromise of a privileged account and remote access tool usage by an attacker.
