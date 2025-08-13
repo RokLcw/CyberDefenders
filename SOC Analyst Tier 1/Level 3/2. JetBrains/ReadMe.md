@@ -41,5 +41,51 @@ Identifying the attacker's IP address helps trace the source and stop further at
 공격자의 IP 주소를 파악하면 출처를 추적하고 추가 공격을 차단하는 데 도움이 됩니다. 공격자의 IP 주소는 무엇입니까?
 
 ### Answers
+23.158.56.196
 
 ### 분석
+admin 계정으로 로그인을 시도하는 패킷을 확인했다.
+
+![JetBrains_Q1_1.png](./IMG/JetBrains_Q1_1.png)
+
+## Q2
+To identify potential vulnerability exploitation, what version of our web server service is running?
+
+잠재적인 취약성 악용을 파악하기 위해, 어떤 버전의 웹 서버 서비스가 실행되고 있습니까?
+
+### Answers
+2023.11.3
+
+### 분석
+공격자가 인증 우회 취약점을 이용해 GET 요청을 보낸 패킷에 대한 응답을 확인해보면 사용된 웹 서비스와 버전을 확인할 수 있다.
+
+![JetBrains_Q2_1.png](./IMG/JetBrains_Q2_1.png)
+
+## Q3
+After identifying the version of our web server service, what CVE number corresponds to the vulnerability the attacker exploited?
+
+웹 서버 서비스의 버전을 식별한 후, 공격자가 악용한 취약점에 해당하는 CVE 번호는 무엇입니까?
+
+### Answers
+CVE-2024-27198
+
+### 분석
+해당 cve는 JetBrains가 개발한 TeamCity 서버에서 발생한 인증 우회 취약점이다.
+
+참고 링크 1: `https://www.rapid7.com/blog/post/2024/03/04/etr-cve-2024-27198-and-cve-2024-27199-jetbrains-teamcity-multiple-authentication-bypass-vulnerabilities-fixed/`
+
+참고 링크 2: `https://www.igloo.co.kr/security-information/jetbrainsteamcity-%EC%9D%B8%EC%A6%9D-%EC%9A%B0%ED%9A%8C-%EC%B7%A8%EC%95%BD%EC%A0%90-cve-2024-27198%EB%B6%84%EC%84%9D-%EB%B0%8F-%EB%8C%80%EC%9D%91%EB%B0%A9%EC%95%88/`
+
+## Q4
+The attacker exploited the vulnerability to create a user account. What credentials did he set up?
+
+공격자는 이 취약점을 악용하여 사용자 계정을 생성했습니다. 그는 어떤 자격 증명을 설정했습니까?
+
+### Answers
+c91oyemw:CL5vzdwLuK
+
+### 분석
+
+![JetBrains_Q4_1.png](./IMG/JetBrains_Q4_1.png)
+
+![JetBrains_Q4_2.png](./IMG/JetBrains_Q4_2.png)
