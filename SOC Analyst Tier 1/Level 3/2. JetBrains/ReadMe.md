@@ -74,7 +74,7 @@ CVE-2024-27198
 
 참고 링크 1: `https://www.rapid7.com/blog/post/2024/03/04/etr-cve-2024-27198-and-cve-2024-27199-jetbrains-teamcity-multiple-authentication-bypass-vulnerabilities-fixed/`
 
-참고 링크 2: `https://www.igloo.co.kr/security-information/jetbrainsteamcity-%EC%9D%B8%EC%A6%9D-%EC%9A%B0%ED%9A%8C-%EC%B7%A8%EC%95%BD%EC%A0%90-cve-2024-27198%EB%B6%84%EC%84%9D-%EB%B0%8F-%EB%8C%80%EC%9D%91%EB%B0%A9%EC%95%88/`
+참고 링크 2: `https://www.igloo.co.kr/security-information/jetbrainsteamcit y-%EC%9D%B8%EC%A6%9D-%EC%9A%B0%ED%9A%8C-%EC%B7%A8%EC%95%BD%EC%A0%90-cve-2024-27198%EB%B6%84%EC%84%9D-%EB%B0%8F-%EB%8C%80%EC%9D%91%EB%B0%A9%EC%95%88/`
 
 ## Q4
 The attacker exploited the vulnerability to create a user account. What credentials did he set up?
@@ -85,7 +85,18 @@ The attacker exploited the vulnerability to create a user account. What credenti
 c91oyemw:CL5vzdwLuK
 
 ### 분석
-
+패킷을 우클릭한 후 Follow → HTTP Stream을 클릭하면 해당 패킷의 스트림을 확인할 수 있다.
 ![JetBrains_Q4_1.png](./IMG/JetBrains_Q4_1.png)
 
+패킷의 세부 정보에서도 확인할 수 있다.
 ![JetBrains_Q4_2.png](./IMG/JetBrains_Q4_2.png)
+
+## Q5
+The attacker uploaded a webshell to ensure his access to the system. What is the name of the file that the attacker uploaded?
+
+공격자는 시스템 접근을 확보하기 위해 웹셸을 업로드했습니다. 공격자가 업로드한 파일 이름은 무엇입니까?
+
+### Answers
+
+
+### 분석
