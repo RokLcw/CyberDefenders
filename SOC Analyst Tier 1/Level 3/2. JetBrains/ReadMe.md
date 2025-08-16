@@ -72,7 +72,7 @@ After identifying the version of our web server service, what CVE number corresp
 CVE-2024-27198
 
 ### 분석
-해당 cve는 JetBrains가 개발한 TeamCity 서버에서 발생한 인증 우회 취약점이다.
+해당 cve는 JetBrains가 개발한 TeamCity 서버에서 발생한 인증 우회 취약점이다. `; .jsp` 문자열이 수상해서 해당 키워드로 검색했더니 관련된 CVE를 찾을 수 있었다.
 
 참고 링크 1: `https://www.rapid7.com/blog/post/2024/03/04/etr-cve-2024-27198-and-cve-2024-27199-jetbrains-teamcity-multiple-authentication-bypass-vulnerabilities-fixed/`
 
