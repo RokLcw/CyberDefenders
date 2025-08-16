@@ -61,6 +61,8 @@ To identify potential vulnerability exploitation, what version of our web server
 
 ![JetBrains_Q2_1.png](./IMG/JetBrains_Q2_1.png)
 
+사용된 필터링: `http and ip.addr == 23.158.56.196`
+
 ## Q3
 After identifying the version of our web server service, what CVE number corresponds to the vulnerability the attacker exploited?
 
@@ -74,7 +76,7 @@ CVE-2024-27198
 
 참고 링크 1: `https://www.rapid7.com/blog/post/2024/03/04/etr-cve-2024-27198-and-cve-2024-27199-jetbrains-teamcity-multiple-authentication-bypass-vulnerabilities-fixed/`
 
-참고 링크 2: `https://www.igloo.co.kr/security-information/jetbrainsteamcit y-%EC%9D%B8%EC%A6%9D-%EC%9A%B0%ED%9A%8C-%EC%B7%A8%EC%95%BD%EC%A0%90-cve-2024-27198%EB%B6%84%EC%84%9D-%EB%B0%8F-%EB%8C%80%EC%9D%91%EB%B0%A9%EC%95%88/`
+참고 링크 2: `https://www.igloo.co.kr/security-information/jetbrainsteamcity-%EC%9D%B8%EC%A6%9D-%EC%9A%B0%ED%9A%8C-%EC%B7%A8%EC%95%BD%EC%A0%90-cve-2024-27198%EB%B6%84%EC%84%9D-%EB%B0%8F-%EB%8C%80%EC%9D%91%EB%B0%A9%EC%95%88/`
 
 ## Q4
 The attacker exploited the vulnerability to create a user account. What credentials did he set up?
@@ -97,6 +99,69 @@ The attacker uploaded a webshell to ensure his access to the system. What is the
 공격자는 시스템 접근을 확보하기 위해 웹셸을 업로드했습니다. 공격자가 업로드한 파일 이름은 무엇입니까?
 
 ### Answers
-
+NSt8bHTg.zip
 
 ### 분석
+공격자가 사용자 계정을 생성한 후 액세스 토큰 생성을 진행했다. 이후 악성 플러그인 업로드가 진행된다.
+
+![JetBrains_Q5_1.png](./IMG/JetBrains_Q5_1.png)
+
+## Q6
+When did the attacker execute their first command via the web shell?
+
+공격자가 웹 셸을 통해 첫 번째 명령을 실행한 것은 언제였습니까?
+
+### Answers
+2024-06-30 08:03
+
+### 분석
+웹 셸 첫 번째 실행 시점은 2024-06-30 08:03:57, 사용된 명령어는 ls로 확인됐다.
+
+![JetBrains_Q6_1.png](./IMG/JetBrains_Q6_1.png)
+
+![JetBrains_Q6_2.png](./IMG/JetBrains_Q6_2.png)
+
+## Q7
+The attacker tampered with a text file that contained the credentials of the admin user of the webserver. What new username and password did the attacker write in the file?
+
+공격자는 웹 서버 관리자의 자격 증명이 포함된 텍스트 파일을 조작했습니다. 공격자는 파일에 어떤 새 사용자 이름과 비밀번호를 입력했습니까?
+
+### Answers
+a1l4m:youarecompromised
+
+### 분석
+/tmp/Creds.txt 파일에 접근해서 username과 password를 입력한 내용이 패킷에서 확인됐다.
+
+![JetBrains_Q7_1.png](./IMG/JetBrains_Q7_1.png)
+
+## Q8
+What is the MITRE Technique ID for the attacker's action in the previous question (Q7) when tampering with the text file?
+
+이전 질문(Q7)에서 공격자가 텍스트 파일을 변조할 때 사용한 MITRE 기술 ID는 무엇입니까?
+
+### Answers
+T1565.001
+
+### 분석
+MITRE Technique에서 Impact → Data Manipulation → Stored Data Manipulation 탭을 확인해보면 데이터 조작과 관련된 MITRE Technique를 확인할 수 있다.
+
+링크: https://attack.mitre.org/techniques/T1565/001/
+
+## Q9
+The attacker tried to escape from the container but he didn’t succeed, What is the command that he used for that?
+
+공격자는 컨테이너에서 탈출을 시도했지만 성공하지 못했습니다. 그가 탈출할 때 사용한 명령은 무엇입니까?
+
+### Answers
+docker run --rm -it -v /:/host ubuntu chroot /host
+
+### 분석
+해당 서버가 도커 컨테이너에서 동작하고 있었던 것 같고, 컨테이너에서 탈출하기 위해 여러 명령어를 입력해서 탈출을 시도해봤던 것으로 보인다.
+
+![JetBrains_Q9_1.png](./IMG/JetBrains_Q9_1.png)
+
+사용된 명령어들은 다음과 같다.
+
+1. `"cmd" = "docker run --rm -it --privileged ubuntu"`
+2. `"cmd" = "docker run --rm -it -v /:/host ubuntu chroot /host"`
+3. `"cmd" = "docker run -v /var/run/docker.sock:/var/run/docker.sock -it ubuntu"`
