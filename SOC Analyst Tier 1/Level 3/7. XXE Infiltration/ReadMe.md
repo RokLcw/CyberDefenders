@@ -156,8 +156,6 @@ mysql 서버에 접근할 계정 정보를 얻기 전 이미 3306 포트의 존�
 
 ![XXE_Infiltration_Q6_2.png](./IMG/XXE_Infiltration_Q6_2.png)
 
-
-
 ## Q7
 To eliminate the threat and prevent further unauthorized access, can you identify the name of the web shell that the attacker uploaded for remote code execution and persistence?
 
