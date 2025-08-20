@@ -117,6 +117,33 @@ As we trace the ransomware's steps, a deeper verification is needed. Can you pro
 랜섬웨어의 실행 경로를 추적함에 따라 더욱 심층적인 검증이 필요합니다. 알려진 악성 시그니처와 교차 검증할 수 있도록 랜섬웨어 실행 파일의 sha256 해시값을 제공해 주시겠습니까?
 
 ### Answers
-
+B8D7FB4488C0556385498271AB9FFFDF0EB38BB2A330265D9852E3A6288092AA
 
 ### 분석
+악성코드의 파일명인 `facebook assistant.exe` 를 이용해서 필터링을 진행했다.
+
+```
+sourcetype="REvil" winlog.event_data.Image="*facebook*"
+| stats values(winlog.event_data.Hashes)
+```
+
+결과는 아래와 같다.
+```
+SHA1=E5D8D5EECF7957996485CBC1CDBEAD9221672A1A
+MD5=4D84641B65D8BB6C3EF03BF59434242D
+SHA256=B8D7FB4488C0556385498271AB9FFFDF0EB38BB2A330265D9852E3A6288092AA
+IMPHASH=C686E5B9F7A178EB79F1CF16460B6A18
+```
+
+## Q6
+One crucial piece remains: identifying the attacker's communication channel. Can you leverage threat intelligence and known Indicators of Compromise (IoCs) to pinpoint the ransomware author's onion domain?
+
+중요한 한 가지가 남아 있습니다. 바로 공격자의 통신 채널을 파악하는 것입니다. 위협 인텔리전스와 알려진 침해 지표(IoC)를 활용하여 랜섬웨어 작성자의 어니언 도메인을 정확히 찾아낼 수 있을까요?
+
+### Answers
+aplebzu47wgazapdqks6vrcv6zcnjppkbxbr6wketf56nf6aq2nmyoyd.onion
+
+### 분석
+tria.ge 에서 해시값을 검색하면 랜섬노트 `0wf8w8-readme.txt` 내용을 확인할 수 있으며, 내용을 확인해보면 어니언 도메인이 적혀있다.
+
+![REvil_Q6_1.png](./IMG/REvil_Q6_1.png)
