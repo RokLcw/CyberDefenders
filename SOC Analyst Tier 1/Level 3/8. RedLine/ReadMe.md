@@ -98,14 +98,58 @@ https 암호화 통신을 할때 사용하며 VPN에서도 사용하는 포트�
 
 svchost.exe, tun2socks.exe, SearchApp.exe, SkypeApp.exe, explorer.exe
 
-VPN과 가장 연관성 있어보이는 프로세스는 `tun2socks.exe`로 
+VPN과 가장 연관성 있어보이는 프로세스는 `tun2socks.exe`로 찾아보면 매우 어려운 설명들로 가득하지만 어쨋든 VPN과 유사한 기법이면서 VPN에서 사용하기도 하는 프로그램인 것 같다.
 
 ![RedLine_Q4_1.png](./IMG/RedLine_Q4_1.png)
 
 해당 프로세스의 부모 프로세스가 문제의 정답이었다.
 
-![RedLine_Q4_2.png](./IMG/RedLine_Q4_2.png)
+![RedLine_Q4_2 .png](./IMG/RedLine_Q4_2.png)
 
+## Q5
+What is the attacker's IP address?
+
+공격자의 IP 주소는 무엇입니까?
+
+### Answers
+77.91.124.20
+
+### 분석
+악성코드로 의심되는 프로세스의 netscan 결과를 확인해보면 `77.91.124.20`로 확인된다.
+
+![RedLine_Q5_1.png](./IMG/RedLine_Q5_1.png)
+
+## Q6
+What is the full URL of the PHP file that the attacker visited?
+
+공격자가 방문한 PHP 파일의 전체 URL은 무엇입니까?
+
+### Answers
+`http://77.91.124.20/store/games/index.php`
+
+### 분석
+strings 명령어를 이용해 `http`, `.php` 가 들어가는 문자열만 grep 해서 텍스트 파일로 추출해봤다.
+
+명령어: `strings MemoryDump.mem | grep "http" | grep ".php" > strings_grep_http_php.txt`
+
+매우 수상해 보이는 링크 하나를 확인할 수 있었다.
+
+![RedLine_Q6_1.png](./IMG/RedLine_Q6_1.png)
+
+## Q7
+What is the full path of the malicious executable?
+
+악성 실행 파일의 전체 경로는 무엇입니까?
+
+### Answers
+C:\Users\Tammam\AppData\Local\Temp\c3912af058\oneetx.exe
+
+### 분석
+pstree 결과에서 확인할 수 있다.
+
+경로: `\Device\HarddiskVolume3\Users\Tammam\AppData\Local\Temp\c3912af058\oneetx.exe`
+
+![RedLine_Q7_1.png](./IMG/RedLine_Q7_1.png)
 
 
 ### 마무리
