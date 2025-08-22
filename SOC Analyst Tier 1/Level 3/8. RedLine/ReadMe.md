@@ -91,14 +91,16 @@ What is the name of the process responsible for the VPN connection?
 VPN 연결을 담당하는 프로세스의 이름은 무엇입니까?
 
 ### Answers
-
+Outline.exe
 
 ### 분석
 https 암호화 통신을 할때 사용하며 VPN에서도 사용하는 포트인 443 포트 연결이 발견된 프로세스 리스트는 다음과 같다.
 
 svchost.exe, tun2socks.exe, SearchApp.exe, SkypeApp.exe, explorer.exe
 
-tun2socks VPN
+VPN과 가장 연관성 있어보이는 프로세스는 `tun2socks.exe`로 
+
+![RedLine_Q4_1.png](./IMG/RedLine_Q4_1.png)
 
 
 ### 마무리
@@ -108,4 +110,4 @@ tun2socks VPN
 링크 2: https://insinuator.net/2021/12/release-of-pte-analysis-plugins-for-volatility-3/
 링크 3: https://insinuator.net/2022/09/some-experiments-with-process-hollowing/
 
-그리고 tun2Socks가 뭔지도 학습해볼것
+그리고 tun2Socks가 뭔지도 학습해볼것 + VPN 개념
