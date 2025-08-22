@@ -102,6 +102,11 @@ VPN과 가장 연관성 있어보이는 프로세스는 `tun2socks.exe`로
 
 ![RedLine_Q4_1.png](./IMG/RedLine_Q4_1.png)
 
+해당 프로세스의 부모 프로세스가 문제의 정답이었다.
+
+![RedLine_Q4_2.png](./IMG/RedLine_Q4_2.png)
+
+
 
 ### 마무리
 볼라틸리티 플러그인 malfind 학습하기
