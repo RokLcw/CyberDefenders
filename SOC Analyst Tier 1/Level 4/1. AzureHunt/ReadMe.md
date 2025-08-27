@@ -103,3 +103,9 @@ To gain insights into the attacker's tactics and enumeration strategy, what is t
 
 
 ### 분석
+도저히 모르겠어서 힌트를 확인했다.
+
+아래 2개의 필드와 필드 값을 설정하면 대상 내용을 확인할 수 있다고 한다.
+
+`azure.eventhub.category: "StorageRead"`
+`azure.eventhub.operationName: "GetBlob"`
